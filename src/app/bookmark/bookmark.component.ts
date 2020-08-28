@@ -13,12 +13,10 @@ export class BookmarkComponent implements OnInit {
 
   ngOnInit(): void {
     this.Bookmarks = this.h.Bookmarks;
-    console.log(this.Bookmarks);
   }
 
   RemoveFromBookmarks(i) {
     this.Bookmarks.splice(i, 1);
     this.h.Bookmarks = this.Bookmarks;
-    console.log(`from bookmarks` + this.Bookmarks);
   }
 }

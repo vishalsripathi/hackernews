@@ -18,16 +18,22 @@ export class NewshomepageComponent implements OnInit {
 
   ngOnInit() {
     this.h.getData().subscribe((data) => {
-      forkJoin(data).subscribe((d) => {
-        this.ArticleList = d;
-      });
+      data.forEach(
+        (d) => {
+          d.subscribe((d) => {
+            this.ArticleList.push(d);
+          });
+        }
+        // forkJoin(data).subscribe((d) => {
+        //   this.ArticleList = d;
+        // });
+      );
     });
   }
 
   addToBookmarks(i) {
     this.Bookmarks.push(this.ArticleList[i]);
     this.h.Bookmarks.push(this.ArticleList[i]);
-    console.log(`from homepage` + this.Bookmarks);
   }
 
   open(content) {
@@ -38,18 +44,12 @@ export class NewshomepageComponent implements OnInit {
           this.closeResult = `Closed with: ${result}`;
         },
         (reason) => {
-          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+          this.closeResult = `Dismissed`;
         }
       );
   }
 
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return `with: ${reason}`;
-    }
+  onScroll() {
+    console.log('scrolled');
   }
 }
