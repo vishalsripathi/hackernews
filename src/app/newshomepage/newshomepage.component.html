@@ -1,0 +1,65 @@
+<nav class="navbar navbar-expand-sm gradient-custom mb-3">
+  <div class="container">
+    <a class="navbar-brand">Hacker News</a>
+    <ul class="navbar-nav">
+      <li>
+        <button class="btn btn-outline-light m-2" [routerLink]="['/bookmarks']">
+          <span
+            ><i class="fa fa-heart" aria-hidden="true"></i> Bookmarks ({{
+              Bookmarks.length
+            }})</span
+          >
+        </button>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="row m-2 justify-content-center">
+  <div
+    class="col-md-12 mb-1 p-1"
+    *ngFor="let article of ArticleList; let i = index"
+  >
+    <div class="card">
+      <div class="card-block">
+        <div class="card-header">
+          <div class="row">
+            <div class="col-10">
+              <h4 (click)="open(mymodal)">Title - {{ article.title }}</h4>
+              <p>
+                <a target="_blank" [href]="article.url"
+                  >Webpage - {{ article.url }}</a
+                >
+              </p>
+            </div>
+            <div
+              class="col-2 text-center align-content-center"
+              (click)="addToBookmarks(i)"
+            >
+              <i class="fa fa-heart fa-lg p-3" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+        <div class="card-body" (click)="open(mymodal)">
+          <p class="card-text">Click Show more for comments</p>
+        </div>
+        <div class="card-footer text-muted text-center">Show more comments</div>
+      </div>
+    </div>
+
+    <ng-template #mymodal let-modal>
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Article</h4>
+        <button
+          type="button"
+          class="btn btn-outline-dark"
+          (click)="modal.dismiss('Cross click')"
+        >
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">{{ article.title }}</div>
+      <div class="modal-body">{{ article.url }}</div>
+    </ng-template>
+  </div>
+</div>

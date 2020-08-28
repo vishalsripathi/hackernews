@@ -1,0 +1,44 @@
+a {
+  text-decoration: none;
+  color: #000000;
+  font-weight: 400;
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: 20px;
+}
+
+.card .card-header {
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+}
+
+.card .card-footer {
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.card-header p {
+  color: #b7b1b1;
+  margin: 0;
+}
+
+.sub-details p {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.gradient-custom {
+  background: linear-gradient(
+    90deg,
+    rgba(1, 219, 223, 1) 0%,
+    rgba(122, 113, 238, 1) 50%,
+    rgba(251, 0, 255, 1) 100%
+  );
+}
+
+.btn:focus {
+  outline: none;
+  box-shadow: none;
+}

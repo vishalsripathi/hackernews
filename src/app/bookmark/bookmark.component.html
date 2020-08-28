@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-sm gradient-custom mb-3">
+  <div class="container">
+    <a class="navbar-brand">Hacker News</a>
+    <ul class="navbar-nav">
+      <li>
+        <button class="btn btn-outline-light m-2" [routerLink]="['/homepage']">
+          <span><i class="fa fa-home p-1"></i> Go home</span>
+        </button>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="row m-2 justify-content-center">
+  <div
+    class="col-md-12 mb-1 p-1"
+    *ngFor="let article of Bookmarks; let i = index"
+  >
+    <div class="card">
+      <div class="card-block">
+        <div class="card-header">
+          <div class="row">
+            <div class="col-10">
+              <h4>Title - {{ article.title }}</h4>
+              <p>Webpage - {{ article.url }}</p>
+            </div>
+            <div
+              class="col-2 text-center align-content-center"
+              (click)="RemoveFromBookmarks(i)"
+            >
+              <i class="far fa-trash-alt p-3"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
